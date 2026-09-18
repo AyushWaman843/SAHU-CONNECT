@@ -1,0 +1,156 @@
+{
+  "checks": [
+    {
+      "path": "/",
+      "width": 1920,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/company/",
+      "width": 1920,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/services/",
+      "width": 1920,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/presence/",
+      "width": 1920,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/contact/",
+      "width": 1920,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/company/",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/services/",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/presence/",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/contact/",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/company/",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/services/",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/presence/",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/contact/",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/company/",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/services/",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/presence/",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/contact/",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/",
+      "width": 320,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/company/",
+      "width": 320,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/services/",
+      "width": 320,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/presence/",
+      "width": 320,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "path": "/contact/",
+      "width": 320,
+      "overflow": false,
+      "brokenImages": 0
+    }
+  ],
+  "errors": [],
+  "sourceParagraphsToReview": []
+}

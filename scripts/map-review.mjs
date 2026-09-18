@@ -1,0 +1,6 @@
+﻿import {chromium} from '@playwright/test';
+import {writeFile} from 'node:fs/promises';
+const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});const page=await browser.newPage({viewport:{width:1440,height:1000}});
+await page.goto('http://localhost:4173/contact/');await page.locator('.office-map').scrollIntoViewIfNeeded();await page.waitForTimeout(10000);const frame=page.frames().find(f=>f.url().includes('/maps/embed'));console.log(await frame.locator('body').innerText());console.log(await frame.locator('a').evaluateAll(els=>els.map(e=>({text:e.textContent,href:e.href}))));await writeFile('docs/map-frame.html',await frame.content());await page.locator('.office').screenshot({path:'docs/qa/office-map-final.png'});
+for(const url of ['https://www.apple.com/iphone/','https://linear.app/']){await page.goto(url,{waitUntil:'domcontentloaded'});await page.waitForTimeout(1500);console.log(url,await page.evaluate(()=>[...document.querySelectorAll('a,button,nav,section')].map(e=>({tag:e.tagName,class:String(e.className).slice(0,80),duration:getComputedStyle(e).transitionDuration,ease:getComputedStyle(e).transitionTimingFunction,animation:getComputedStyle(e).animationName})).filter(e=>e.duration!=='0s'||e.animation!=='none').slice(0,8)));}
+await browser.close();
