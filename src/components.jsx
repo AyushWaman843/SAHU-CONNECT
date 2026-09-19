@@ -8,7 +8,28 @@ export function Brand(){return <a className="brand" href="/" aria-label="SAHUCON
 export function Header({path}) {
  const [open,setOpen]=useState(false);const toggle=useRef(null);const panel=useRef(null);
  useEffect(()=>{if(!open)return;const onKey=e=>{if(e.key==='Escape'){setOpen(false);toggle.current?.focus()}if(e.key==='Tab'){const items=[toggle.current,...panel.current.querySelectorAll('a')];const index=items.indexOf(document.activeElement);if(e.shiftKey&&index===0){e.preventDefault();items.at(-1).focus()}else if(!e.shiftKey&&index===items.length-1){e.preventDefault();items[0].focus()}}};document.addEventListener('keydown',onKey);return()=>document.removeEventListener('keydown',onKey)},[open]);
- return <header className={path==='/'?'site-header on-hero':'site-header'}><div className="topbar"><div className="container"><span><Factory size={14}/>{p[195]}</span><a href={`tel:${headOffice.phone.replace(/\s/g,'')}`}><Phone size={13}/>{headOffice.phone}</a><a href={`mailto:${headOffice.email}`}><EnvelopeSimple size={14}/>{headOffice.email}</a></div></div><div className="container nav-wrap"><Brand/><button ref={toggle} className="menu-toggle" aria-label={open?'Close navigation':'Open navigation'} aria-controls="navigation" aria-expanded={open} onClick={()=>setOpen(!open)}><List className="menu-lines" size={26} aria-hidden="true"/><X className="menu-close" size={26} aria-hidden="true"/></button><nav ref={panel} id="navigation" className={open?'navigation open':'navigation'} aria-label="Main navigation">{nav.slice(0,-1).map(([href,label])=><a key={href} href={href} aria-current={path===href?'page':undefined}>{label}</a>)}<Button href="/contact/">{title(p[430])}</Button></nav></div></header>
+ useEffect(()=>{
+  const navigation=panel.current;if(!navigation)return;
+  const links=[...navigation.querySelectorAll('a:not(.button)')];
+  const active=navigation.querySelector('a[aria-current="page"]');
+  const place=link=>{
+   if(!link||!link.offsetWidth)return navigation.style.setProperty('--glider-opacity','0');
+   navigation.style.setProperty('--glider-x',`${link.offsetLeft}px`);
+   navigation.style.setProperty('--glider-w',`${link.offsetWidth}px`);
+   navigation.style.setProperty('--glider-opacity','1');
+  };
+  const restore=()=>place(active);
+  const leaveFocus=event=>{if(!navigation.contains(event.relatedTarget))restore()};
+  const cleanups=links.map(link=>{
+   const enter=()=>place(link);
+   link.addEventListener('pointerenter',enter);link.addEventListener('focus',enter);
+   return()=>{link.removeEventListener('pointerenter',enter);link.removeEventListener('focus',enter)};
+  });
+  navigation.addEventListener('pointerleave',restore);navigation.addEventListener('focusout',leaveFocus);
+  requestAnimationFrame(restore);
+  return()=>{cleanups.forEach(cleanup=>cleanup());navigation.removeEventListener('pointerleave',restore);navigation.removeEventListener('focusout',leaveFocus)};
+ },[path]);
+ return <header className={path==='/'?'site-header on-hero':'site-header'}><div className="topbar"><div className="container"><span><Factory size={14}/>{p[195]}</span><a href={`tel:${headOffice.phone.replace(/\s/g,'')}`}><Phone size={13}/>{headOffice.phone}</a><a href={`mailto:${headOffice.email}`}><EnvelopeSimple size={14}/>{headOffice.email}</a></div></div><div className="container nav-wrap"><Brand/><button ref={toggle} className="menu-toggle" aria-label={open?'Close navigation':'Open navigation'} aria-controls="navigation" aria-expanded={open} onClick={()=>setOpen(!open)}><List className="menu-lines" size={26} aria-hidden="true"/><X className="menu-close" size={26} aria-hidden="true"/></button><nav ref={panel} id="navigation" className={open?'navigation open':'navigation'} aria-label="Main navigation">{nav.slice(0,-1).map(([href,label])=><a key={href} href={href} aria-current={path===href?'page':undefined}><span>{label}</span></a>)}<Button href="/contact/">{title(p[430])}</Button><i className="nav-glider" aria-hidden="true"/></nav></div></header>
 }
 export function SectionHeading({eyebrow,heading,href,label,center=false}) {return <div className={`section-heading ${center?'center':''}`}><div>{eyebrow&&<p className="eyebrow">{eyebrow}</p>}<h2>{heading}</h2></div>{href&&<Button href={href}>{label}</Button>}</div>}
 export function Checks({items}){return <ul className="checks">{items.map(t=><li key={t}><CheckCircle weight="fill" size={16} aria-hidden="true"/><span>{t}</span></li>)}</ul>}

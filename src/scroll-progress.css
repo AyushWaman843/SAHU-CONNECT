@@ -1,0 +1,30 @@
+.page-progress {
+ position:fixed;
+ z-index:40;
+ right:12px;
+ top:50%;
+ width:4px;
+ height:clamp(92px,16vh,150px);
+ translate:0 -50%;
+ overflow:hidden;
+ border-radius:99px;
+ background:#1017291c;
+ box-shadow:0 0 0 1px #fff8;
+ pointer-events:none;
+}
+.page-progress span {
+ position:absolute;
+ inset:0;
+ border-radius:inherit;
+ background:var(--orange);
+ transform:scaleY(0);
+ transform-origin:top;
+}
+@supports(animation-timeline:scroll()) {
+ @media(prefers-reduced-motion:no-preference) {
+  .page-progress span { animation:page-progress linear both; animation-timeline:scroll(root block); }
+ }
+}
+@keyframes page-progress { to { transform:scaleY(1); } }
+@media(max-width:767px) { .page-progress { right:5px; width:3px; height:90px; opacity:.72; } }
+@media(prefers-reduced-motion:reduce) { .page-progress { display:none; } }

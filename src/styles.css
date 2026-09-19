@@ -9,3 +9,41 @@ h1,h2,h3{font-family:Barlow,Arial,sans-serif;font-weight:700}h1{font-size:clamp(
 @media(max-width:767px){.hero h1{font-size:38px;line-height:1.1}.hero h1 br{display:none}.hero-content{padding-top:158px}.hero-content>p{margin-top:19px}.hero .button-row{flex-direction:column;align-items:center}.hero .button{font-size:13px}.section-heading h2{font-size:30px}.brand{font-size:26px}.service-card h3{font-size:19px}.strengths-grid h3{font-size:20px}.leadership-preview h3{font-size:21px}.contact-card h3{font-size:26px}.full-services h2{font-size:23px}.result-card h3{font-size:20px}.footer-grid h3{font-size:20px}}
 @media(max-width:380px){.hero h1{font-size:34px}.hero-content{padding-top:145px}}
 .profile-heading{margin-bottom:22px}.office-tagline{margin-top:24px}
+
+/* Typographic foundation: one dominant entry point, clear supporting levels and a consistent reading rhythm. */
+body{font-size:16px;line-height:1.6;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+h1,h2,h3{text-wrap:balance}
+h1{font-size:clamp(2.65rem,4.4vw,4.25rem);line-height:.98;letter-spacing:-.045em}
+h2{font-size:clamp(2rem,3vw,3rem);line-height:1.02;letter-spacing:-.038em}
+h3{line-height:1.12;letter-spacing:-.027em}
+p,li,td,th{font-kerning:normal}
+.eyebrow{font-size:.75rem;line-height:1.25;font-weight:600;letter-spacing:.085em;text-transform:uppercase;margin-bottom:12px}
+.section{padding-block:clamp(4.5rem,7.5vw,6.75rem)}
+.section-heading{margin-bottom:clamp(2rem,4vw,3.25rem)}
+.section-heading h2{max-width:18ch}
+.hero h1{font-size:clamp(2.75rem,5vw,4.75rem);line-height:.98;letter-spacing:-.05em}
+.hero-content>p,.page-hero .container>p:last-child,.company-intro p,.about-statement{max-width:65ch}
+.site-header{position:sticky;top:0;z-index:50;background:#fffffff2;box-shadow:0 1px 0 #1017290d}
+.site-header.on-hero{position:fixed;background:transparent;box-shadow:none}
+@media(max-width:767px){h1{font-size:clamp(2.4rem,11vw,3.25rem)}h2{font-size:clamp(1.9rem,8vw,2.5rem)}.hero h1{font-size:clamp(2.4rem,11vw,3.25rem)}.section{padding-block:clamp(3.75rem,15vw,5rem)}}
+
+/* The hero finishes in a soft architectural cutout, with metrics bridging image and page. */
+.hero{border-radius:0;background:transparent}
+.hero-content{position:relative;z-index:1}
+.hero-edge-defs{position:absolute;width:0;height:0;pointer-events:none}
+.hero>.photo,.hero:after{clip-path:url(#hero-image-edge)}
+.metrics{width:min(820px,calc(100% - 48px));margin-top:-66px;min-height:116px;box-shadow:0 12px 34px #1017290b}
+@media(max-width:767px){.hero>.photo,.hero:after{clip-path:url(#hero-image-edge-mobile)}.metrics{width:calc(100% - 36px);margin-top:-42px;min-height:112px}}
+
+/* Sticky editorial image band for the homepage partnership callout. */
+.image-callout{
+ background-image:url('/images/maintenance-team.webp');
+ background-size:cover;
+ background-position:center 40%;
+ background-attachment:fixed;
+ overflow:clip;
+}
+.image-callout>.photo{display:none}
+@media(max-width:767px){
+ .image-callout{background-attachment:scroll;background-position:center 45%}
+}

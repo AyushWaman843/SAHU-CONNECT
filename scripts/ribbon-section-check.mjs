@@ -1,0 +1,10 @@
+﻿import {chromium} from '@playwright/test';
+const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:1000}});
+await page.goto('http://localhost:4173/');
+await page.locator('.strengths').scrollIntoViewIfNeeded();
+await page.waitForTimeout(600);
+const state=await page.evaluate(()=>({scrollY,sectionTop:document.querySelector('.strengths').offsetTop,clip:getComputedStyle(document.querySelector('.scroll-ribbon svg')).clipPath,mainHeight:document.querySelector('main').offsetHeight}));
+await page.screenshot({path:'docs/qa/ribbon-value-addition.png'});
+console.log(state);
+await browser.close();
